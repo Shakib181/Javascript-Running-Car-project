@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Running Car Project</title>
+    <style>
+        button{
+            background-color: blueviolet;
+            padding: 10px 20px;
+            color: white;
+            margin-right: 40px;
+            font-size: 1.5rem;
+        }
+        #carImg{
+            width: 320px;
+            height: 250px;
+            
+        }
+        .img-div{
+            background-color: antiquewhite;
+            width: 100%;
+            height: 220px;
+            box-shadow: 3px 4px 5px black;
+        }
+    </style>
+</head>
+<body>
+    <button id="StartBtn">Start</button>
+    <button id="StopBtn">Stop</button> <br><br>
+
+    <div class="img-div">
+        <img id="carImg" src="car-image2.png" alt="">
+    </div>
+
+    <script>
+        var carImage = document.getElementById("carImg");
+        var StartBtn = document.getElementById("StartBtn");
+        var StopBtn = document.getElementById("StopBtn");
+        var carStart ;
+        var start = 0;
+        StartBtn.addEventListener("click", function(){
+            carStart = setInterval(run, 100);
+            function run(){
+                if(start == 1000){
+                    clearInterval(carStart);
+                    start = 0;
+                }
+                else{
+                    start+= 10;
+                    carImage.style.marginLeft = start+'px';
+                }
+            }
+        })
+
+        StopBtn.addEventListener("click", function(){
+            clearInterval(carStart);
+        })
+
+    </script>
+
+</body>
+</html>
